@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <!-- Font Awesome cdn css --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa00T92x01BIsZ+ywDWZCvqsWgccV3gFoRBv@z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
-    
+    <header>
+        <h1>TO DO LIST</h1>
+    </header>
+    <form action="">
+        <input type="text" class="todo-input" id="todo-inputfield">
+        <button class="todo-button" type="button" onclick="addTodo()">
+            <i class="fas fa-plus-circle fa-lg"></i>
+        </button>
+    </form>
+
+    <!-- <div class="todo-container">
+        <ul class="todo-list">
+            <div class="todo">
+                <li class="todo-list">play god of war</li>
+                <button class="complete-btn" onclick="completed()"> <i class="fas fa-check"></i> </button>
+                <button class="delete-btn" onclick="deleteTask()"> <i class="fas fa-trash"></i> </button>
+            </div>
+            
+        </ul>
+    </div> -->
+
+    <div class="todo-container">
+        <ul class="todo-list"></ul>
+    </div>
+    <script src="./script.js"></script>
 </body>
 </html>
