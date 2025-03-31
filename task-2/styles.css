@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2E3192,  #1BFFFF);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+.calculator {
+    width: 260px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.displayClass {
+    width: 95%;
+    height: 50px;
+    text-align: right;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 8px;
+    color: #333;
+    font-weight: bold;
+}
+#displayOperation {
+    font-weight: normal;
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    width: 100%;
+    height: 60px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #e0e0e0;
+    transition: all 0.2s ease-in-out;
+}
+#button0 {
+    grid-column: span 2;
+}
+.btn:hover {
+    background: #d1d1d1;
+    transform: scale(1.05);
+}
+
+.btn.operator {
+    background: #ff9800;
+    color: white;
+}
+
+.btn.operator:hover {
+    background: #e68900;
+}
+
+.btn.equal {
+    grid-column: span 4;
+    background: #4caf50;
+    color: white;
+}
+
+.btn.equal:hover {
+    background: #388e3c;
+}
+
+#clear {
+    background: #f44336;
+    color: white;
+}
+
+#clear:hover {
+    background: #d32f2f;
+}
+
+.watermark {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+.watermark a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+.watermark a:hover {
+    text-decoration: underline;
+}
