@@ -1,0 +1,55 @@
+
+    {
+        "questions": [
+            {
+                "question": "Which company developed the game 'The Witcher 3: Wild Hunt'?",
+                "options": ["Ubisoft", "CD Projekt Red", "Bethesda", "Rockstar Games"],
+                "correct": "CD Projekt Red"
+            },
+            {
+                "question": "What is the name of the main protagonist in the 'Halo' series?",
+                "options": ["Master Chief", "Commander Shepard", "Gordon Freeman", "Doom Slayer"],
+                "correct": "Master Chief"
+            },
+            {
+                "question": "Which game popularized the 'battle royale' genre?",
+                "options": ["Fortnite", "PUBG", "Apex Legends", "Call of Duty: Warzone"],
+                "correct": "PUBG"
+            },
+            {
+                "question": "What year was the first 'Super Mario Bros.' game released?",
+                "options": ["1980", "1985", "1990", "1995"],
+                "correct": "1985"
+            },
+            {
+                "question": "Which video game franchise features a character named 'Kratos'?",
+                "options": ["Devil May Cry", "Dark Souls", "God of War", "The Elder Scrolls"],
+                "correct": "God of War"
+            },
+            {
+                "question": "Which game holds the record for best-selling video game of all time?",
+                "options": ["GTA V", "Tetris", "Minecraft", "Call of Duty: Modern Warfare"],
+                "correct": "Minecraft"
+            },
+            {
+                "question": "In 'The Legend of Zelda' series, what is the name of Link’s horse?",
+                "options": ["Shadowmere", "Epona", "Roach", "Agro"],
+                "correct": "Epona"
+            },
+            {
+                "question": "What is the main currency used in 'The Elder Scrolls V: Skyrim'?",
+                "options": ["Gold", "Septims", "Caps", "Rupees"],
+                "correct": "Septims"
+            },
+            {
+                "question": "Which video game features a map called 'Dust II'?",
+                "options": ["Valorant", "Call of Duty", "Counter-Strike", "Battlefield"],
+                "correct": "Counter-Strike"
+            },
+            {
+                "question": "What is the main objective in 'Among Us'?",
+                "options": ["Build structures", "Kill all players", "Complete tasks and find impostors", "Escape a haunted house"],
+                "correct": "Complete tasks and find impostors"
+            }
+        ]
+    }
