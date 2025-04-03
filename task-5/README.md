@@ -3,7 +3,7 @@
 A simple, modern **Quiz App** that dynamically loads **questions** from a JSON file using **JavaScript**. The app allows users to select answers and check if they are correct.  
 
 ## Output Screenshot  
-![Weather App](output.gif)  
+![Quiz App](output.gif)  
 
 ## **🔑 Key JavaScript Code**  
 
