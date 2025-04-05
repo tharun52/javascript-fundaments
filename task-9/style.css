@@ -1,0 +1,6 @@
+body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+}
+.post { padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+#loader { text-align: center; margin: 20px; display: none; }
