@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoe Store - Checkout</title>
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-wrapper">
+      <h1 class="logo">Shoe<span>Store</span></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="checkout-section">
+    <section class="bill-box">
+      <h2>Order Summary</h2>
+      <div id="bill" class="bill-details"></div>
+    </section>
+
+    <section class="coupon-box">
+      <h3>Apply Coupon</h3>
+      <input type="text" id="coupon" class="coupon-input" placeholder="Enter coupon code">
+      <button id="applyCoupon" class="apply-btn">Apply Coupon</button>
+      <p class="coupon-note">Use code <strong>DISCOUNT50</strong> to get 50% off!</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    // Checkout page script (unchanged)
+    document.addEventListener("DOMContentLoaded", function(){
+      const billDiv = document.getElementById("bill");
+      const couponInput = document.getElementById("coupon");
+      const applyCouponBtn = document.getElementById("applyCoupon");
+      let couponApplied = false;
+      
+      function calculateBill(){
+        const cart = getCart();
+        let subtotal = 0;
+        cart.forEach(item => {
+          subtotal += item.price * item.quantity;
+        });
+        const gst = subtotal * 0.18;
+        let total = subtotal + gst;
+        if(couponApplied && couponInput.value.trim().toUpperCase() === "DISCOUNT50"){
+          total = total * 0.5;
+        }
+        return {subtotal, gst, total};
+      }
+      
+      function renderBill(){
+        const {subtotal, gst, total} = calculateBill();
+        billDiv.innerHTML = `
+          <p><strong>Subtotal:</strong> $${subtotal.toFixed(2)}</p>
+          <p><strong>GST (18%):</strong> $${gst.toFixed(2)}</p>
+          <p class="total"><strong>Total:</strong> $${total.toFixed(2)}</p>
+        `;
+      }
+      
+      applyCouponBtn.addEventListener("click", function(){
+        if(couponInput.value.trim().toUpperCase() === "DISCOUNT50"){
+          couponApplied = true;
+          alert("Coupon applied! 50% discount on total.");
+        } else {
+          couponApplied = false;
+          alert("Invalid coupon code.");
+        }
+        renderBill();
+      });
+      
+      renderBill();
+    });
+  </script>
+</body>
+</html>

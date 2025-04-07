@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoe Store - Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-wrapper">
+      <h1 class="logo">Shoe<span>Store</span></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cart-section">
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="checkout-container">
+      <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </main>
+
+
+  <script src="app.js"></script>
+  <script>
+    // Cart page script (unchanged)
+    document.addEventListener("DOMContentLoaded", function(){
+      const cartItemsDiv = document.getElementById("cartItems");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+
+      function renderCart(){
+        const cart = getCart();
+        if(cart.length === 0){
+          cartItemsDiv.innerHTML = "<p class='empty-message'>Your cart is empty.</p>";
+          checkoutBtn.style.display = "none";
+          return;
+        }
+
+        let html = '<table class="cart-table"><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Action</th></tr>';
+        cart.forEach(item => {
+          html += `<tr>
+            <td>${item.name}</td>
+            <td>$${item.price}</td>
+            <td><input type="number" min="1" value="${item.quantity}" data-id="${item.id}"></td>
+            <td><button data-id="${item.id}" class="remove">Remove</button></td>
+          </tr>`;
+        });
+        html += '</table>';
+        cartItemsDiv.innerHTML = html;
+        checkoutBtn.style.display = "inline-block";
+      }
+
+      renderCart();
+
+      cartItemsDiv.addEventListener("change", function(e){
+        if(e.target.tagName === "INPUT"){
+          const id = parseInt(e.target.getAttribute("data-id"));
+          const newQuantity = parseInt(e.target.value);
+          updateCartQuantity(id, newQuantity);
+          renderCart();
+        }
+      });
+
+      cartItemsDiv.addEventListener("click", function(e){
+        if(e.target.classList.contains("remove")){
+          const id = parseInt(e.target.getAttribute("data-id"));
+          removeFromCart(id);
+          renderCart();
+        }
+      });
+
+      checkoutBtn.addEventListener("click", function(){
+        window.location.href = "checkout.html";
+      });
+    });
+  </script>
+</body>
+</html>

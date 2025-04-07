@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoe Store - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container nav-wrapper">
+      <a href="index.html"><h1 class="logo">Shoe<span>Store</span></h1></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>Step Into Style</h2>
+      <p>Discover our exclusive collection of trendy sneakers and sportswear.</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Notification -->
+  <div id="notification" class="notification"></div>
+
+  <!-- Search and Products -->
+  <section class="container shop-section">
+    <input type="text" id="search" placeholder="Search for shoes..." class="search-bar">
+    <div id="products" class="product-grid"></div>
+  </section>
+
+  <!-- Featured Section -->
+  <section id="featured" class="featured-section">
+    <div class="container">
+      <h2>Why Choose Us?</h2>
+      <div class="features">
+        <div class="feature-box">
+          <h3>Top Brands</h3>
+          <p>We bring you the latest collections from leading shoe brands.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Fast Delivery</h3>
+          <p>Get your kicks at lightning speed with our express delivery.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Secure Checkout</h3>
+          <p>Protected and encrypted payment system for your peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // Home page script
+    document.addEventListener("DOMContentLoaded", function(){
+      let productsData = [];
+      const productsDiv = document.getElementById("products");
+      const searchInput = document.getElementById("search");
+      const notification = document.getElementById("notification");
+      
+      // Load products from products.json
+      fetch('products.json')
+        .then(response => response.json())
+        .then(data => {
+           productsData = data;
+           displayProducts(productsData);
+        });
+      
+      // Display products in the DOM.
+      function displayProducts(products) {
+        productsDiv.innerHTML = "";
+        products.forEach(product => {
+          const productDiv = document.createElement("div");
+          productDiv.className = "product";
+          productDiv.innerHTML = `
+            <img src="img/${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p>Price: $${product.price}</p>
+            <button data-id="${product.id}">Add to Cart</button>
+          `;
+          productsDiv.appendChild(productDiv);
+        });
+      }
+      
+      // Filter products by search query.
+      searchInput.addEventListener("input", function(){
+        const query = searchInput.value.toLowerCase();
+        const filtered = productsData.filter(p => p.name.toLowerCase().includes(query));
+        displayProducts(filtered);
+      });
+      
+      // Function to show a notification with an animation.
+      function showNotification(message) {
+        notification.textContent = message;
+        notification.classList.add("show");
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 2000); // notification is visible for 2 seconds
+      }
+      
+      // Delegate add-to-cart button clicks.
+      productsDiv.addEventListener("click", function(e){
+        if(e.target.tagName === "BUTTON") {
+          const id = parseInt(e.target.getAttribute("data-id"));
+          const product = productsData.find(p => p.id === id);
+          if(product) {
+            addToCart(product);
+            showNotification(product.name + " added to cart!");
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

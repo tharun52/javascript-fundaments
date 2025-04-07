@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "name": "Air",
+      "price": 100,
+      "description": "High quality air shoes.",
+      "image": "air.png"
+    },
+    {
+      "id": 2,
+      "name": "Blazer",
+      "price": 150,
+      "description": "Stylish blazer shoes.",
+      "image": "blazer.png"
+    },
+    {
+      "id": 3,
+      "name": "Crater",
+      "price": 200,
+      "description": "Rugged crater shoes.",
+      "image": "crater.png"
+    },
+    {
+      "id": 4,
+      "name": "Hippie",
+      "price": 120,
+      "description": "Casual hippie shoes.",
+      "image": "hippie.png"
+    }
+  ]
+  
